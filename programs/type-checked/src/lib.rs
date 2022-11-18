@@ -50,7 +50,10 @@ pub struct InitializeUser<'info> {
 
 #[derive(Accounts)]
 pub struct UpdateAdmin<'info> {
-    #[account(mut)]
+    #[account(
+        mut,
+        has_one = admin
+    )]
     pub admin_config: Account<'info, AdminConfig>,
     pub new_admin: SystemAccount<'info>,
     #[account(mut)]
